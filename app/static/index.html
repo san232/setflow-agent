@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="곡의 분위기를 연결하는 SetFlow Agent">
+  <title>SetFlow Agent · 분위기를 잇는 플레이리스트</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/catalog.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="SetFlow 홈"><span class="brand-icon">≋</span><span>SetFlow <small>AGENT</small></span></a>
+    <div class="header-actions"><span id="server-status" class="badge">서버 확인 중</span><span id="mode" class="badge">모드 확인 중</span><a href="/docs" target="_blank" rel="noopener">API 문서 ↗</a></div>
+  </header>
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">KING GNU / LIVE TO YOUR LIBRARY</p><h1>곡 사이에, 흐름을 만들다.</h1><p>King Gnu의 공연과 곡별 자료를 참고해, 나만의 Setlist를 설계하세요.</p></div>
+      <button id="seed-button" class="secondary">King Gnu 43곡 불러오기</button>
+    </section>
+    <div id="notice" role="status" aria-live="polite" class="notice">대표 공연 7개(2019~2025)와 장르·악기 자료를 참고한 주관적 초깃값입니다. 다섯 수치를 직접 수정할 수 있습니다.</div>
+    <div class="workspace">
+      <section class="panel library">
+        <div class="section-heading"><div><p class="eyebrow">01 / LIBRARY</p><h2>곡 보관함 <span id="song-count" class="count">0</span></h2></div><button id="toggle-form" class="primary" aria-expanded="true" aria-controls="song-form">곡 등록 / 편집</button></div>
+        <form id="song-form" class="song-form">
+          <div class="form-heading"><strong id="form-title">새 곡 등록</strong><button type="button" id="cancel-edit" class="text-button" hidden>편집 취소</button></div>
+          <div class="two-columns"><label>곡 제목<input name="title" required maxlength="200" placeholder="예: 逆夢"></label><label>아티스트<input name="artist" required maxlength="200" placeholder="예: King Gnu"></label></div>
+          <div class="mood-inputs">
+            <label>에너지<input name="energy" type="number" min="0" max="100" step="1" required placeholder="0–100"></label>
+            <label>밝기<input name="valence" type="number" min="0" max="100" step="1" required placeholder="0–100"></label>
+            <label>긴장도<input name="tension" type="number" min="0" max="100" step="1" required placeholder="0–100"></label>
+            <label>밀도<input name="density" type="number" min="0" max="100" step="1" required placeholder="0–100"></label>
+            <label>마무리 적합도<input name="closure" type="number" min="0" max="100" step="1" required placeholder="0–100"></label>
+          </div>
+          <div class="form-footer"><label class="grow">재생 위치 <span class="muted">선택 · M3U용 파일 경로 또는 URL</span><input name="media_uri" maxlength="2000" placeholder="예: C:\Music\my-song.mp3"></label><button type="submit" class="primary" id="save-song">곡 등록</button></div>
+          <p class="field-help">다섯 수치는 0~100의 주관적 평가값입니다. King Gnu 초깃값을 편집하거나, 새 곡의 값을 직접 입력하세요.</p>
+        </form>
+        <div class="table-toolbar"><label class="checkbox-label"><input id="select-all" type="checkbox" checked> 전체 선택</label><span id="selection-count" class="muted">0곡 선택</span></div>
+        <div class="table-scroll"><table><thead><tr><th><span class="sr-only">선택</span></th><th>곡 / 아티스트</th><th>에너지</th><th>밝기</th><th>긴장</th><th>밀도</th><th>마무리</th><th>관리</th></tr></thead><tbody id="song-rows"></tbody></table></div>
+        <p id="empty-library" class="empty">등록된 곡이 없습니다.<br>King Gnu 43곡을 불러오거나 첫 곡을 등록해 보세요.</p>
+        <p class="footnote">곡별 ‘장르·악기·근거’에서 초깃값의 출처를 확인하세요. 역대 공연 전수조사나 음원 측정값은 아니며, 악기 정보는 확인된 일부 공연·편곡 기준입니다. <a href="/api/catalog/king-gnu" target="_blank" rel="noopener">전체 자료 JSON ↗</a></p>
+      </section>
+      <section class="panel flow">
+        <div class="section-heading"><div><p class="eyebrow">02 / SET YOUR FLOW</p><h2>분위기 곡선</h2></div><span class="badge subtle">5 PRESETS</span></div>
+        <form id="playlist-form">
+          <label>Playlist 이름<input id="playlist-name" maxlength="200" required value="나의 SetFlow"></label>
+          <label>목표 흐름<select id="preset"><option value="gentle_rise">완만한 상승 · gentle_rise</option><option value="mid_peak" selected>중반 절정형 · mid_peak</option><option value="late_explosion">후반 폭발형 · late_explosion</option><option value="calm_afterglow">잔잔한 여운 · calm_afterglow</option><option value="auto">곡 분포에 맞춘 자동 흐름 · auto</option></select></label>
+          <p id="preset-description" class="field-help"></p>
+          <button type="submit" class="primary wide" id="generate-button">선택한 곡으로 Playlist 생성 →</button>
+        </form>
+        <div class="chart-heading"><strong id="chart-title">목표 에너지 미리보기</strong><span class="chart-legend"><i class="target-dot"></i>목표 <i class="actual-dot"></i>실제</span></div>
+        <svg id="curve-chart" viewBox="0 0 480 220" role="img" aria-label="목표 에너지와 실제 곡 에너지 곡선"></svg>
+        <div id="playlist-summary" class="score-box"><span>Playlist를 만들면 적합도와 곡별 배치 이유가 표시됩니다.</span></div>
+        <label class="saved-label">저장된 Playlist<select id="saved-playlists"><option value="">저장된 결과 선택</option></select></label>
+        <div class="export-actions"><button id="export-json" class="secondary" disabled>JSON 내보내기 ↓</button><button id="export-m3u" class="secondary" disabled>M3U 내보내기 ↓</button></div>
+      </section>
+      <section class="panel playlist-panel">
+        <div class="section-heading"><div><p class="eyebrow">03 / THE SETLIST</p><h2 id="playlist-title">생성된 Playlist</h2></div><span id="playlist-meta" class="muted">생성 결과가 여기에 표시됩니다</span></div>
+        <ol id="playlist-items" class="playlist-items"><li class="empty">원하는 곡과 분위기 곡선을 선택하고 Playlist를 생성하세요.</li></ol>
+      </section>
+      <section class="panel agent-panel">
+        <div class="section-heading"><div><p class="eyebrow">04 / TALK TO YOUR AGENT</p><h2>자연어로 요청하기</h2></div><button id="new-chat" class="text-button">새 대화</button></div>
+        <p id="chat-context" class="field-help">현재 화면의 Playlist를 대화 대상으로 사용할 수 있습니다.</p>
+        <div class="example-prompts"><button data-prompt="현재 등록된 곡을 보여줘.">곡 목록 보기</button><button data-prompt="중반 절정형으로 플레이리스트를 만들어줘.">중반 절정형 만들기</button><button data-prompt="왜 이 순서로 배치했는지 설명해줘.">배치 이유 설명</button><button data-prompt="방금 만든 플리를 M3U로 내보내줘.">M3U 내보내기</button></div>
+        <div id="chat-messages" class="chat-messages" aria-live="polite"><p class="empty">Demo Mode에서는 위 예시 문장으로 Tool 선택을 시연할 수 있습니다.</p></div>
+        <form id="chat-form"><label class="sr-only" for="chat-input">Agent 요청</label><textarea id="chat-input" required maxlength="4000" rows="2" placeholder="예: 곡 ID 1의 긴장도를 60으로 수정해줘."></textarea><button id="chat-send" type="submit" class="primary">요청 보내기 ↑</button></form>
+        <div id="selected-tools" class="selected-tools"></div>
+      </section>
+      <section class="panel logs-panel">
+        <div class="section-heading"><div><p class="eyebrow">05 / TOOL TRACE</p><h2>최근 실행 로그</h2></div><button id="refresh-logs" class="text-button">새로고침 ↻</button></div>
+        <p class="field-help">Agent가 선택한 Tool, Arguments, 실행 결과를 확인하세요. Form에서 직접 실행한 REST 작업은 이 로그에 포함되지 않습니다.</p>
+        <div id="tool-logs" class="tool-logs"><p class="empty">아직 Agent Tool 실행 기록이 없습니다.</p></div>
+      </section>
+    </div>
+    <footer>SetFlow Agent · AI 에이전트 서버 프로젝트 <span>사용자 입력 → Tool 선택 → 규칙 기반 정렬 → 설명과 로그</span></footer>
+  </main>
+</body>
+</html>

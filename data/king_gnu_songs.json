@@ -1,0 +1,392 @@
+{
+  "notice": "King Gnu 대표 공연 7개(2019~2025)와 곡·장르·악기 자료를 참고한 주관적 초깃값입니다. 실측 음원 분석·공식 점수·역대 전수조사가 아닙니다. 공연 편곡은 원곡과 다를 수 있으며 직접 수정할 수 있습니다.",
+  "songs": [
+    {
+      "title": "飛行艇",
+      "artist": "King Gnu",
+      "energy": 91,
+      "valence": 72,
+      "tension": 80,
+      "density": 90,
+      "closure": 58
+    },
+    {
+      "title": "Sorrows",
+      "artist": "King Gnu",
+      "energy": 83,
+      "valence": 65,
+      "tension": 67,
+      "density": 82,
+      "closure": 33
+    },
+    {
+      "title": "あなたは蜃気楼",
+      "artist": "King Gnu",
+      "energy": 74,
+      "valence": 55,
+      "tension": 66,
+      "density": 74,
+      "closure": 35
+    },
+    {
+      "title": "ロウラヴ",
+      "artist": "King Gnu",
+      "energy": 66,
+      "valence": 48,
+      "tension": 55,
+      "density": 62,
+      "closure": 43
+    },
+    {
+      "title": "It's a small world",
+      "artist": "King Gnu",
+      "energy": 49,
+      "valence": 64,
+      "tension": 30,
+      "density": 48,
+      "closure": 43
+    },
+    {
+      "title": "Vinyl",
+      "artist": "King Gnu",
+      "energy": 76,
+      "valence": 52,
+      "tension": 65,
+      "density": 76,
+      "closure": 40
+    },
+    {
+      "title": "Overflow",
+      "artist": "King Gnu",
+      "energy": 65,
+      "valence": 58,
+      "tension": 48,
+      "density": 65,
+      "closure": 41
+    },
+    {
+      "title": "NIGHT POOL",
+      "artist": "King Gnu",
+      "energy": 34,
+      "valence": 40,
+      "tension": 48,
+      "density": 76,
+      "closure": 40
+    },
+    {
+      "title": "白日",
+      "artist": "King Gnu",
+      "energy": 63,
+      "valence": 42,
+      "tension": 62,
+      "density": 74,
+      "closure": 56
+    },
+    {
+      "title": "Slumberland",
+      "artist": "King Gnu",
+      "energy": 83,
+      "valence": 35,
+      "tension": 82,
+      "density": 86,
+      "closure": 34
+    },
+    {
+      "title": "Vivid Red",
+      "artist": "King Gnu",
+      "energy": 77,
+      "valence": 53,
+      "tension": 62,
+      "density": 72,
+      "closure": 34
+    },
+    {
+      "title": "Hitman",
+      "artist": "King Gnu",
+      "energy": 41,
+      "valence": 38,
+      "tension": 45,
+      "density": 42,
+      "closure": 45
+    },
+    {
+      "title": "The hole",
+      "artist": "King Gnu",
+      "energy": 27,
+      "valence": 18,
+      "tension": 62,
+      "density": 42,
+      "closure": 58
+    },
+    {
+      "title": "Don't Stop the Clocks",
+      "artist": "King Gnu",
+      "energy": 26,
+      "valence": 50,
+      "tension": 25,
+      "density": 25,
+      "closure": 55
+    },
+    {
+      "title": "McDonald Romance",
+      "artist": "King Gnu",
+      "energy": 33,
+      "valence": 64,
+      "tension": 23,
+      "density": 30,
+      "closure": 60
+    },
+    {
+      "title": "Bedtown",
+      "artist": "King Gnu",
+      "energy": 41,
+      "valence": 55,
+      "tension": 35,
+      "density": 38,
+      "closure": 46
+    },
+    {
+      "title": "Tokyo Rendez-Vous",
+      "artist": "King Gnu",
+      "energy": 83,
+      "valence": 48,
+      "tension": 74,
+      "density": 85,
+      "closure": 42
+    },
+    {
+      "title": "Prayer X",
+      "artist": "King Gnu",
+      "energy": 58,
+      "valence": 30,
+      "tension": 70,
+      "density": 62,
+      "closure": 50
+    },
+    {
+      "title": "Flash!!!",
+      "artist": "King Gnu",
+      "energy": 94,
+      "valence": 67,
+      "tension": 95,
+      "density": 94,
+      "closure": 55
+    },
+    {
+      "title": "Teenager Forever",
+      "artist": "King Gnu",
+      "energy": 89,
+      "valence": 89,
+      "tension": 58,
+      "density": 88,
+      "closure": 71
+    },
+    {
+      "title": "傘",
+      "artist": "King Gnu",
+      "energy": 53,
+      "valence": 31,
+      "tension": 50,
+      "density": 58,
+      "closure": 52
+    },
+    {
+      "title": "サマーレイン・ダイバー",
+      "artist": "King Gnu",
+      "energy": 34,
+      "valence": 55,
+      "tension": 30,
+      "density": 65,
+      "closure": 89
+    },
+    {
+      "title": "どろん",
+      "artist": "King Gnu",
+      "energy": 88,
+      "valence": 45,
+      "tension": 90,
+      "density": 91,
+      "closure": 36
+    },
+    {
+      "title": "ユーモア",
+      "artist": "King Gnu",
+      "energy": 52,
+      "valence": 64,
+      "tension": 28,
+      "density": 55,
+      "closure": 45
+    },
+    {
+      "title": "破裂",
+      "artist": "King Gnu",
+      "energy": 33,
+      "valence": 28,
+      "tension": 52,
+      "density": 28,
+      "closure": 50
+    },
+    {
+      "title": "三文小説",
+      "artist": "King Gnu",
+      "energy": 51,
+      "valence": 48,
+      "tension": 60,
+      "density": 82,
+      "closure": 70
+    },
+    {
+      "title": "千両役者",
+      "artist": "King Gnu",
+      "energy": 93,
+      "valence": 60,
+      "tension": 92,
+      "density": 92,
+      "closure": 44
+    },
+    {
+      "title": "泡",
+      "artist": "King Gnu",
+      "energy": 36,
+      "valence": 30,
+      "tension": 46,
+      "density": 64,
+      "closure": 53
+    },
+    {
+      "title": "BOY",
+      "artist": "King Gnu",
+      "energy": 67,
+      "valence": 90,
+      "tension": 25,
+      "density": 65,
+      "closure": 55
+    },
+    {
+      "title": "一途",
+      "artist": "King Gnu",
+      "energy": 95,
+      "valence": 38,
+      "tension": 97,
+      "density": 88,
+      "closure": 43
+    },
+    {
+      "title": "カメレオン",
+      "artist": "King Gnu",
+      "energy": 47,
+      "valence": 38,
+      "tension": 54,
+      "density": 52,
+      "closure": 57
+    },
+    {
+      "title": "雨燦々",
+      "artist": "King Gnu",
+      "energy": 62,
+      "valence": 86,
+      "tension": 25,
+      "density": 74,
+      "closure": 68
+    },
+    {
+      "title": "逆夢",
+      "artist": "King Gnu",
+      "energy": 59,
+      "valence": 50,
+      "tension": 50,
+      "density": 80,
+      "closure": 64
+    },
+    {
+      "title": "STARDOM",
+      "artist": "King Gnu",
+      "energy": 88,
+      "valence": 80,
+      "tension": 63,
+      "density": 92,
+      "closure": 65
+    },
+    {
+      "title": "小さな惑星",
+      "artist": "King Gnu",
+      "energy": 61,
+      "valence": 72,
+      "tension": 30,
+      "density": 60,
+      "closure": 46
+    },
+    {
+      "title": "壇上",
+      "artist": "King Gnu",
+      "energy": 29,
+      "valence": 55,
+      "tension": 38,
+      "density": 30,
+      "closure": 71
+    },
+    {
+      "title": "SPECIALZ",
+      "artist": "King Gnu",
+      "energy": 88,
+      "valence": 25,
+      "tension": 94,
+      "density": 90,
+      "closure": 38
+    },
+    {
+      "title": "硝子窓",
+      "artist": "King Gnu",
+      "energy": 51,
+      "valence": 35,
+      "tension": 56,
+      "density": 65,
+      "closure": 55
+    },
+    {
+      "title": "2 Μ Ο Я Ο",
+      "artist": "King Gnu",
+      "energy": 48,
+      "valence": 58,
+      "tension": 28,
+      "density": 52,
+      "closure": 52
+    },
+    {
+      "title": "):阿修羅:(",
+      "artist": "King Gnu",
+      "energy": 92,
+      "valence": 45,
+      "tension": 95,
+      "density": 96,
+      "closure": 39
+    },
+    {
+      "title": "IKAROS",
+      "artist": "King Gnu",
+      "energy": 39,
+      "valence": 40,
+      "tension": 35,
+      "density": 50,
+      "closure": 56
+    },
+    {
+      "title": "ねっこ",
+      "artist": "King Gnu",
+      "energy": 44,
+      "valence": 55,
+      "tension": 40,
+      "density": 64,
+      "closure": 66
+    },
+    {
+      "title": "MASCARA",
+      "artist": "King Gnu",
+      "energy": 51,
+      "valence": 40,
+      "tension": 46,
+      "density": 58,
+      "closure": 60
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+.research-toggle { background: transparent; color: var(--teal); font-size: 10px; padding: 6px 0 0; text-align: left; }
+.research-toggle:hover { text-decoration: underline; }
+.research-row > td { white-space: normal; text-align: left; padding: 0 5px 12px; }
+.research-content { background: #f0f6f2; border: 1px solid #dce8df; border-radius: 10px; padding: 15px; line-height: 1.8; overflow-wrap: anywhere; }
+.research-content > strong { font-size: 12px; }
+.research-content p { margin: 7px 0; }
+.research-content ul { padding-left: 18px; margin-bottom: 0; }
+.research-content li { margin: 8px 0; }
+.research-sources { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 10px; }
+.research-sources a { text-decoration: underline; text-underline-offset: 3px; }
+.research-edited { color: var(--accent-dark); font-weight: 600; }

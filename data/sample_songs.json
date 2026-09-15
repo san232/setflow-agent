@@ -1,0 +1,15 @@
+{
+  "notice": "모든 제목과 아티스트는 기능 시연을 위한 가상 데이터이며, 분위기 수치는 임의 값입니다. 음원이나 객관적 음악 분석 결과를 포함하지 않습니다.",
+  "songs": [
+    {"title":"새벽의 입구","artist":"SetFlow Ensemble","energy":15,"valence":40,"tension":12,"density":18,"closure":65},
+    {"title":"첫 번째 빛","artist":"SetFlow Ensemble","energy":28,"valence":60,"tension":20,"density":30,"closure":40},
+    {"title":"느린 산책","artist":"SetFlow Ensemble","energy":38,"valence":65,"tension":25,"density":35,"closure":50},
+    {"title":"도시의 박동","artist":"SetFlow Ensemble","energy":52,"valence":58,"tension":45,"density":55,"closure":25},
+    {"title":"달리는 마음","artist":"SetFlow Ensemble","energy":67,"valence":72,"tension":55,"density":68,"closure":30},
+    {"title":"네온 웨이브","artist":"SetFlow Ensemble","energy":79,"valence":68,"tension":72,"density":80,"closure":20},
+    {"title":"한가운데 불꽃","artist":"SetFlow Ensemble","energy":95,"valence":85,"tension":90,"density":96,"closure":35},
+    {"title":"마지막 도약","artist":"SetFlow Ensemble","energy":88,"valence":80,"tension":78,"density":90,"closure":85},
+    {"title":"남겨진 온기","artist":"SetFlow Ensemble","energy":43,"valence":55,"tension":28,"density":42,"closure":90},
+    {"title":"작은 여운","artist":"SetFlow Ensemble","energy":20,"valence":48,"tension":10,"density":16,"closure":98}
+  ]
+}

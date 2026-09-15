@@ -1,0 +1,372 @@
+{
+  "artist": "King Gnu",
+  "accessed_on": "2026-09-15",
+  "scope": "2019~2025년의 서로 다른 투어/단독공연 대표 7개. 역대 전수조사 및 전곡 디스코그래피가 아님.",
+  "aliases": {
+    "ロウラブ": "ロウラヴ",
+    "Stardom": "STARDOM",
+    "CHAMELEON": "カメレオン"
+  },
+  "excluded_titles": {
+    "開会式": "SE/연결 트랙",
+    "閉会式": "SE/연결 트랙",
+    "幕間": "연결 트랙",
+    "MIRROR": "초기 후보에서는 TGU 연결 소곡 제외",
+    "DARE??": "초기 후보에서는 TGU 연결 소곡 제외",
+    "W●RKAHOLIC": "초기 후보에서는 TGU 연결 소곡 제외",
+    "δ": "초기 후보에서는 TGU 연결 소곡 제외",
+    "SUNNY SIDE UP": "초기 후보에서는 TGU 연결 소곡 제외",
+    "仝": "초기 후보에서는 TGU 연결 소곡 제외",
+    "ЯOЯЯIM": "초기 후보에서는 TGU 연결 소곡 제외",
+    "W●RK": "millennium parade × 椎名林檎 게스트 곡; King Gnu 후보에서 제외"
+  },
+  "concerts": [
+    {
+      "id": "2019-aw",
+      "date": "2019-11-26",
+      "name": "Live Tour 2019 AW FINAL",
+      "venue": "Zepp Tokyo",
+      "sources": [
+        {
+          "label": "AWA 공식 발표",
+          "url": "https://prtimes.jp/main/html/rd/p/000000733.000022425.html"
+        }
+      ],
+      "sections": [
+        {
+          "name": "main",
+          "songs": [
+            "飛行艇",
+            "Sorrows",
+            "あなたは蜃気楼",
+            "ロウラブ",
+            "It's a small world",
+            "Vinyl",
+            "Overflow",
+            "NIGHT POOL",
+            "白日",
+            "Slumberland",
+            "Vivid Red",
+            "Hitman",
+            "The hole",
+            "Don't Stop the Clocks",
+            "McDonald Romance",
+            "Bedtown",
+            "Tokyo Rendez-Vous",
+            "Prayer X",
+            "Flash!!!",
+            "Teenager Forever"
+          ]
+        },
+        {
+          "name": "encore",
+          "songs": [
+            "傘",
+            "サマーレイン・ダイバー"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2020-ceremony",
+      "date": "2020-12-06",
+      "name": "Live Tour 2020 AW CEREMONY",
+      "venue": "Makuhari Messe",
+      "sources": [
+        {
+          "label": "음악 나탈리 공연 보도",
+          "url": "https://natalie.mu/music/news/407728"
+        }
+      ],
+      "sections": [
+        {
+          "name": "main",
+          "songs": [
+            "開会式",
+            "どろん",
+            "Sorrows",
+            "Vinyl",
+            "It's a small world",
+            "白日",
+            "飛行艇",
+            "Overflow",
+            "Slumberland",
+            "Vivid Red",
+            "Hitman",
+            "The hole",
+            "ユーモア",
+            "傘",
+            "Tokyo Rendez-Vous",
+            "破裂",
+            "Prayer X",
+            "ロウラブ",
+            "Flash!!!"
+          ]
+        },
+        {
+          "name": "encore",
+          "songs": [
+            "閉会式",
+            "三文小説",
+            "Teenager Forever"
+          ]
+        },
+        {
+          "name": "double_encore",
+          "songs": [
+            "千両役者"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2021-aw",
+      "date": "2021-12-15",
+      "name": "Live Tour 2021 AW",
+      "venue": "Yoyogi National Gymnasium",
+      "sources": [
+        {
+          "label": "음악 나탈리 공연 보도",
+          "url": "https://natalie.mu/music/news/457875"
+        }
+      ],
+      "sections": [
+        {
+          "name": "main",
+          "songs": [
+            "飛行艇",
+            "千両役者",
+            "Vinyl",
+            "Sorrows",
+            "ユーモア",
+            "白日",
+            "破裂",
+            "Prayer X",
+            "The hole",
+            "泡",
+            "Hitman",
+            "三文小説",
+            "Slumberland",
+            "Tokyo Rendez-Vous",
+            "傘",
+            "どろん",
+            "Flash!!!",
+            "Teenager Forever"
+          ]
+        },
+        {
+          "name": "encore",
+          "songs": [
+            "BOY",
+            "一途",
+            "サマーレイン・ダイバー"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2022-dome",
+      "date": "2022-11-20",
+      "name": "Live at TOKYO DOME",
+      "venue": "Tokyo Dome",
+      "sources": [
+        {
+          "label": "음악 나탈리 공연 보도",
+          "url": "https://natalie.mu/music/news/502139"
+        },
+        {
+          "label": "Fender 현장 보고",
+          "url": "https://fendernews.jp/kinggnu-live-at-tokyodome/"
+        }
+      ],
+      "sections": [
+        {
+          "name": "main",
+          "songs": [
+            "一途",
+            "飛行艇",
+            "Sorrows",
+            "千両役者",
+            "BOY",
+            "カメレオン",
+            "Hitman",
+            "The hole",
+            "NIGHT POOL",
+            "It's a small world",
+            "白日",
+            "雨燦々",
+            "Slumberland",
+            "どろん",
+            "破裂",
+            "Prayer X",
+            "Vinyl",
+            "Flash!!!",
+            "逆夢",
+            "Stardom"
+          ]
+        },
+        {
+          "name": "encore",
+          "songs": [
+            "McDonald Romance",
+            "Teenager Forever",
+            "Tokyo Rendez-Vous",
+            "サマーレイン・ダイバー"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2023-closing",
+      "date": "2023-06-04",
+      "name": "Stadium Live Tour 2023 CLOSING CEREMONY",
+      "venue": "Nissan Stadium",
+      "sources": [
+        {
+          "label": "음악 나탈리 공연 보도",
+          "url": "https://natalie.mu/music/news/527459"
+        }
+      ],
+      "sections": [
+        {
+          "name": "main",
+          "songs": [
+            "開会式",
+            "飛行艇",
+            "Tokyo Rendez-Vous",
+            "Teenager Forever",
+            "BOY",
+            "雨燦々",
+            "小さな惑星",
+            "傘",
+            "ユーモア",
+            "Don't Stop the Clocks",
+            "カメレオン",
+            "三文小説",
+            "泡",
+            "幕間",
+            "どろん",
+            "Overflow",
+            "Prayer X",
+            "Slumberland",
+            "Stardom",
+            "一途",
+            "逆夢",
+            "壇上",
+            "サマーレイン・ダイバー"
+          ]
+        },
+        {
+          "name": "encore",
+          "songs": [
+            "閉会式",
+            "白日",
+            "McDonald Romance",
+            "Flash!!!"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2024-tgu",
+      "date": "2024-01-28",
+      "name": "Dome Tour THE GREATEST UNKNOWN",
+      "venue": "Tokyo Dome",
+      "sources": [
+        {
+          "label": "음악 나탈리 공연 보도",
+          "url": "https://natalie.mu/music/news/566755"
+        },
+        {
+          "label": "Sony Music 공식 영상 수록 순서",
+          "url": "https://www.sonymusic.co.jp/artist/kinggnu/info/567342"
+        }
+      ],
+      "sections": [
+        {
+          "name": "main",
+          "songs": [
+            "SPECIALZ",
+            "一途",
+            "千両役者",
+            "STARDOM",
+            "MIRROR",
+            "CHAMELEON",
+            "DARE??",
+            "Vivid Red",
+            "白日",
+            "硝子窓",
+            "泡",
+            "2 Μ Ο Я Ο",
+            "Vinyl",
+            "W●RKAHOLIC",
+            "W●RK",
+            "):阿修羅:(",
+            "δ",
+            "逆夢",
+            "IKAROS",
+            "Slumberland",
+            "Sorrows",
+            "Flash!!!",
+            "BOY",
+            "SUNNY SIDE UP",
+            "雨燦々",
+            "仝",
+            "三文小説",
+            "ЯOЯЯIM"
+          ]
+        },
+        {
+          "name": "encore",
+          "songs": [
+            "Teenager Forever",
+            "飛行艇"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2025-club",
+      "date": "2025-04-09",
+      "name": "LIVEHOUSE TOUR 2025 CLUB GNU EDITION",
+      "venue": "Tokyo Garden Theater",
+      "sources": [
+        {
+          "label": "음악 나탈리 공연 보도",
+          "url": "https://natalie.mu/music/news/619979"
+        }
+      ],
+      "sections": [
+        {
+          "name": "main",
+          "songs": [
+            "):阿修羅:(",
+            "Flash!!!",
+            "Sorrows",
+            "あなたは蜃気楼",
+            "ねっこ",
+            "硝子窓",
+            "The hole",
+            "Hitman",
+            "Bedtown",
+            "McDonald Romance",
+            "Prayer X",
+            "Tokyo Rendez-Vous",
+            "SPECIALZ",
+            "飛行艇"
+          ]
+        },
+        {
+          "name": "encore",
+          "songs": [
+            "一途",
+            "ロウラヴ",
+            "MASCARA",
+            "SUNNY SIDE UP",
+            "雨燦々"
+          ]
+        }
+      ]
+    }
+  ]
+}

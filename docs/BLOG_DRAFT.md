@@ -53,3 +53,5 @@ GitHub 저장소: [san232/setflow-agent](https://github.com/san232/setflow-agent
 ---
 
 게시 전 편집 메모: 위 본인 확인란과 실제 URL을 채운 뒤 이 메모를 삭제한다. 이미지는 `docs/screenshots/submission/`의 같은 파일명으로 첨부한다. 자료의 상세 출처는 [King Gnu 조사 문서](KING_GNU_DATA.md)에 있다.
+
+실행 사이트: [SetFlow 바로 사용하기](https://setflow-agent.onrender.com)

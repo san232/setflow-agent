@@ -5,6 +5,8 @@
 **[수행평가 4] AI 에이전트 서버 프로젝트**  
 제출 예정일: **2026년 9월 16일** · 자료 정리일: 2026년 9월 15일
 
+**실행 사이트: [SetFlow 바로 사용하기](https://setflow-agent.onrender.com)**
+
 GitHub 저장소: [san232/setflow-agent](https://github.com/san232/setflow-agent)
 
 ## 웹사이트로 배포하기

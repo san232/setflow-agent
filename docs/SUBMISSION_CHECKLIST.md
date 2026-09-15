@@ -6,6 +6,8 @@
 
 GitHub 저장소: [san232/setflow-agent](https://github.com/san232/setflow-agent)
 
+실행 사이트: [SetFlow](https://setflow-agent.onrender.com) — 43곡 자동 등록·도구 실행·다운로드 확인.
+
 ## 제출물과 파일
 
 | 제출물 | 준비된 내용 |

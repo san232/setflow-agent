@@ -47,3 +47,7 @@
 ## GitHub Actions 검증
 
 공개 커밋 `576f86b`에서 Python 3.12와 잠금 의존성을 사용해 설치, `pip check`, `pytest -q`가 모두 성공했다. Ubuntu 실행 결과는 `62 passed, 1 deselected, 1 warning in 15.44s`다. [자동 테스트 실행 기록](https://github.com/san232/setflow-agent/actions/runs/34934928553)에서 확인할 수 있다.
+
+## 웹 배포 추가 검증
+
+Render 배포 설정을 추가한 `15bec55`에서 전체 테스트 65개가 통과했다. 기존 62개와 배포 테스트 3개를 포함한다. 실제 [실행 사이트](https://setflow-agent.onrender.com)에서 43곡 생성·도구 로그·JSON/M3U 다운로드를 확인했다. 설정, 검증 결과와 근거 파일은 [배포 안내](DEPLOYMENT.md)에 정리했다.

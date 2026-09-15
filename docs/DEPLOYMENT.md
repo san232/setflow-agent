@@ -1,5 +1,7 @@
 # SetFlow 웹 배포
 
+**실행 사이트: [SetFlow](https://setflow-agent.onrender.com)** · Render Free · Singapore
+
 GitHub 저장소는 소스 코드 주소이고, 실행 사이트는 Python 서버를 구동하는 호스팅에서 발급하는 HTTPS 주소다. 이 프로젝트는 FastAPI·SQLite·도구 실행을 포함하므로 정적 파일만 제공하는 GitHub Pages에서 그대로 실행되지 않는다. [GitHub Pages 안내](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
 
 ## Render 무료 배포
@@ -53,3 +55,7 @@ OpenAI API 키는 입력하지 않는다. `SETFLOW_PUBLIC_DEMO=true`는 외부 �
 ## 배포 설정 검증
 
 2026-09-15 로컬에서 전체 테스트 `65 passed, 1 deselected, 1 warning in 35.31s`를 확인했다. 추가 테스트는 시작 시 43곡 등록, 재시작 후 편집값 보존, 공개 체험판의 외부 API 호출 차단, 실제 도구를 통한 43곡 생성·JSON 다운로드와 배포 환경 변수 적용을 검사한다.
+
+공개 코드 `15bec55`의 [GitHub 자동 테스트](https://github.com/san232/setflow-agent/actions/runs/34936993253)도 통과했다. [배포 설정 테스트 XML](evidence/pytest-deployment-2026-09-15.xml)은 PC 호스트 이름을 가린 실제 실행 기록이다.
+
+2026-09-15 실제 HTTPS 사이트에서 기본 43곡, 자연어 요청의 `generate_playlist` 성공, 43곡 결과(적합도 91.58, 비용 361.9857), JSON·M3U 다운로드 HTTP 200을 확인했다. [공개 서버 검증 기록](evidence/hosted-2026-09-15.json)에 응답 요약을 남겼다.

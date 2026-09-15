@@ -1,0 +1,28 @@
+{
+  "url": "https://setflow-agent.onrender.com",
+  "health": {
+    "status": "ok",
+    "mode": "demo",
+    "model": null,
+    "public_demo": true,
+    "agent_ready": true,
+    "notice": "Demo Mode · 제한된 규칙 Router",
+    "prototype_notice": "사용자 입력 분위기 수치에 기반한 Prototype"
+  },
+  "songs": 43,
+  "playlist_id": 1,
+  "playlist_items": 43,
+  "fit_score": 91.58,
+  "cost": 361.9857,
+  "exports": {
+    "json": {
+      "status": 200,
+      "bytes": 37900
+    },
+    "m3u": {
+      "status": 200,
+      "bytes": 1905
+    }
+  },
+  "tool_execution": "generate_playlist success"
+}

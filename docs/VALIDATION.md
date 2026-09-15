@@ -43,3 +43,7 @@
 현재 캡처는 `docs/screenshots/submission/`에 있다. 전체 보관함의 총수와 정렬 곡선, 생성 결과, 자연어 요청·선택 인자, 실행 로그, 곡별 조사 근거를 담았다. 보고서는 글자 가독성을 위해 해당 부분을 잘라 배치하며 원본 PNG도 함께 제공한다.
 
 테스트는 개인 PC 정보를 가린 실제 stdout과 JUnit XML을 제공하고 보고서에 결과 문자열을 그대로 인용했다. 앱의 실행 화면과 테스트 로그 문서를 구분했다. 상세 이미지별 설명은 [캡처 안내](SCREENSHOT_GUIDE.md)를 따른다.
+
+## GitHub Actions 검증
+
+공개 커밋 `576f86b`에서 Python 3.12와 잠금 의존성을 사용해 설치, `pip check`, `pytest -q`가 모두 성공했다. Ubuntu 실행 결과는 `62 passed, 1 deselected, 1 warning in 15.44s`다. [자동 테스트 실행 기록](https://github.com/san232/setflow-agent/actions/runs/34934928553)에서 확인할 수 있다.

@@ -35,7 +35,7 @@ Blueprint 대신 **New → Web Service → Public Git Repository**를 사용해 
 | `SETFLOW_AUTO_SEED` | `true` |
 | `SETFLOW_DB_PATH` | `/tmp/setflow/setflow.db` |
 
-OpenAI API 키는 입력하지 않는다. `SETFLOW_PUBLIC_DEMO=true`는 외부 모델 호출을 사용하지 않고 실제 서버의 Demo Router·정렬·도구를 실행한다. 두 배포 전용 설정의 기본값은 `false`라서 기존 로컬 실행 설정은 유지된다.
+OpenAI API 키는 입력하지 않는다. `SETFLOW_PUBLIC_DEMO=true`는 외부 모델 호출을 사용하지 않고 실제 서버의 Demo Router·정렬·도구를 실행한다. 공개 체험판 설정의 기본값은 `false`이며, 기본 곡 자동 등록(`SETFLOW_AUTO_SEED`)은 로컬과 배포 환경에서 모두 기본으로 켜져 있다.
 
 ## 접속과 데이터 저장
 

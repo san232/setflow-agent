@@ -268,7 +268,6 @@ document.querySelector(".example-prompts").append(searchPrompt);
 $("cancel-edit").addEventListener("click", resetForm);
 $("select-all").addEventListener("change", () => { state.selected = $("select-all").checked ? new Set(state.songs.map(s => s.id)) : new Set(); renderSongs(); });
 $("preset").addEventListener("change", previewPreset);
-$("seed-button").addEventListener("click", () => action($("seed-button"), async () => { const result = await api("/api/sample-data", { method: "POST" }); await refreshSongs(); previewPreset(); notify(`${result.added}곡 추가 · ${result.notice}`); }));
 $("song-form").addEventListener("submit", (event) => { event.preventDefault(); action($("save-song"), async () => {
   const data = Object.fromEntries(new FormData(event.target));
   for (const field of moodFields) data[field] = Number(data[field]);

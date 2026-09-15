@@ -7,8 +7,13 @@ from app.config import Settings
 from app.main import create_app
 
 
-def test_hosted_catalog_survives_restart_without_overwriting_edits(tmp_path: Path) -> None:
-    settings = Settings(db_path=tmp_path / "hosted.db", auto_seed=True, public_demo=True)
+def test_hosted_catalog_survives_restart_without_overwriting_edits(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr("app.config.load_dotenv", lambda *args: None)
+    monkeypatch.delenv("SETFLOW_AUTO_SEED", raising=False)
+    monkeypatch.setenv("SETFLOW_DB_PATH", str(tmp_path / "hosted.db"))
+    monkeypatch.setenv("SETFLOW_PUBLIC_DEMO", "true")
+    settings = Settings.from_env()
+    assert settings.auto_seed is True
     with TestClient(create_app(settings)) as client:
         songs = client.get("/api/songs").json()
         assert len(songs) == 43

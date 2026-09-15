@@ -18,29 +18,28 @@
   </header>
   <main>
     <section class="intro">
-      <div><p class="eyebrow">KING GNU / LIVE TO YOUR LIBRARY</p><h1>곡 사이에, 흐름을 만들다.</h1><p>King Gnu의 공연과 곡별 자료를 참고해, 나만의 Setlist를 설계하세요.</p></div>
-      <button id="seed-button" class="secondary">King Gnu 43곡 불러오기</button>
+      <div><p class="eyebrow">LIVE TO YOUR LIBRARY</p><h1>곡 사이에, 흐름을 만들다.</h1><p>나만의 Setlist를 설계하세요.</p></div>
     </section>
     <aside id="public-demo-notice" class="notice" hidden>공개 체험용입니다. 보관함·결과·요청 로그를 방문자끼리 공유하며, 서버가 다시 켜지면 초기화될 수 있습니다. 보관할 결과는 JSON/M3U로 내려받으세요.</aside>
-    <div id="notice" role="status" aria-live="polite" class="notice">대표 공연 7개(2019~2025)와 장르·악기 자료를 참고한 주관적 초깃값입니다. 다섯 수치를 직접 수정할 수 있습니다.</div>
+    <div id="notice" role="status" aria-live="polite" class="notice">처음에는 King Gnu 43곡이 기본으로 제공됩니다. 원하는 아티스트의 곡을 검색해 추가하고, 다섯 분위기 수치를 직접 조절하세요.</div>
     <div class="workspace">
       <section class="panel library">
         <div class="section-heading"><div><p class="eyebrow">01 / LIBRARY</p><h2>곡 보관함 <span id="song-count" class="count">0</span></h2></div><button id="toggle-form" class="secondary" aria-expanded="false" aria-controls="song-form">직접 등록 / 편집</button></div>
         <section class="music-search" aria-labelledby="search-heading">
           <h3 id="search-heading">YouTube에서 곡 찾기</h3>
           <form id="music-search-form">
-            <label class="grow">곡명 또는 아티스트<input id="music-query" required maxlength="200" value="King Gnu" placeholder="예: King Gnu 白日"></label>
+            <label class="grow">곡명 또는 아티스트<input id="music-query" required maxlength="200" placeholder="찾고 싶은 곡명 또는 아티스트 입력"></label>
             <label>검색 범위<select id="music-kind"><option value="songs">곡 우선</option><option value="videos">YouTube 영상</option></select></label>
             <button id="music-search-button" class="primary" type="submit">검색</button>
           </form>
           <p class="field-help">로그인 없이 검색하고, 선택한 곡의 정보를 확인한 뒤 저장하세요. 곡 검색 결과가 없으면 YouTube 영상으로 찾습니다.</p>
           <p id="music-search-status" class="field-help" role="status" aria-live="polite">보관함 곡의 ‘링크 찾기’를 누르면 기존 곡에 영상을 연결할 수 있습니다.</p>
           <div id="music-search-results" class="music-search-results"></div>
-          <div class="music-search-links"><a id="open-youtube-search" href="https://www.youtube.com/results?search_query=King%20Gnu" target="_blank" rel="noopener noreferrer">YouTube에서 검색 ↗</a><a id="open-music-search" href="https://music.youtube.com/search?q=King%20Gnu" target="_blank" rel="noopener noreferrer">YouTube Music에서 검색 ↗</a></div>
+          <div class="music-search-links"><a id="open-youtube-search" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube에서 검색 ↗</a><a id="open-music-search" href="https://music.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube Music에서 검색 ↗</a></div>
         </section>
         <form id="song-form" class="song-form" hidden>
           <div class="form-heading"><strong id="form-title">새 곡 등록</strong><button type="button" id="cancel-edit" class="text-button" hidden>편집 취소</button></div>
-          <div class="two-columns"><label>곡 제목<input name="title" required maxlength="200" placeholder="예: 逆夢"></label><label>아티스트<input name="artist" required maxlength="200" placeholder="예: King Gnu"></label></div>
+          <div class="two-columns"><label>곡 제목<input name="title" required maxlength="200" placeholder="곡 제목 입력"></label><label>아티스트<input name="artist" required maxlength="200" placeholder="아티스트 이름 입력"></label></div>
           <div class="mood-inputs">
             <label>에너지<input name="energy" type="number" min="0" max="100" step="1" required placeholder="0–100"></label>
             <label>밝기<input name="valence" type="number" min="0" max="100" step="1" required placeholder="0–100"></label>
@@ -49,13 +48,13 @@
             <label>마무리 적합도<input name="closure" type="number" min="0" max="100" step="1" required placeholder="0–100"></label>
           </div>
           <div class="form-footer"><label class="grow">재생 위치 <span class="muted">선택 · M3U용 파일 경로 또는 URL</span><input name="media_uri" maxlength="2000" placeholder="예: C:\Music\my-song.mp3"></label><button type="submit" class="primary" id="save-song">곡 등록</button></div>
-          <p class="field-help">다섯 수치는 0~100의 주관적 평가값입니다. King Gnu 초깃값을 편집하거나, 새 곡의 값을 직접 입력하세요.</p>
+          <p class="field-help">다섯 수치는 0~100의 주관적 평가값입니다. 보관함 곡의 수치를 수정하거나, 새 곡의 값을 직접 입력하세요.</p>
           <p id="selected-music-help" class="field-help" hidden></p>
         </form>
         <div class="table-toolbar"><label class="checkbox-label"><input id="select-all" type="checkbox" checked> 전체 선택</label><span id="selection-count" class="muted">0곡 선택</span></div>
         <div class="table-scroll"><table><thead><tr><th><span class="sr-only">선택</span></th><th>곡 / 아티스트</th><th>에너지</th><th>밝기</th><th>긴장</th><th>밀도</th><th>마무리</th><th>관리</th></tr></thead><tbody id="song-rows"></tbody></table></div>
-        <p id="empty-library" class="empty">등록된 곡이 없습니다.<br>King Gnu 43곡을 불러오거나 첫 곡을 등록해 보세요.</p>
-        <p class="footnote">곡별 ‘장르·악기·근거’에서 초깃값의 출처를 확인하세요. 역대 공연 전수조사나 음원 측정값은 아니며, 악기 정보는 확인된 일부 공연·편곡 기준입니다. <a href="/api/catalog/king-gnu" target="_blank" rel="noopener">전체 자료 JSON ↗</a></p>
+        <p id="empty-library" class="empty" hidden>등록된 곡이 없습니다.<br>원하는 곡을 검색하거나 직접 등록해 보세요.</p>
+        <p class="footnote">기본 제공되는 King Gnu 곡의 수치는 대표 공연 7개(2019~2025)와 장르·악기 자료를 참고한 주관적 초깃값입니다. 곡별 ‘장르·악기·근거’에서 출처를 확인하세요. 역대 공연 전수조사나 음원 측정값은 아니며, 악기 정보는 확인된 일부 공연·편곡 기준입니다. <a href="/api/catalog/king-gnu" target="_blank" rel="noopener">King Gnu 조사 자료 JSON ↗</a></p>
       </section>
       <section class="panel flow">
         <div class="section-heading"><div><p class="eyebrow">02 / SET YOUR FLOW</p><h2>분위기 곡선</h2></div><span class="badge subtle">5 PRESETS</span></div>

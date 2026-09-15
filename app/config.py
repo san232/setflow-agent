@@ -32,7 +32,7 @@ class Settings:
                    os.getenv("SETFLOW_DEMO_MODE", "false").lower() == "true",
                    max(1, min(12, int(os.getenv("SETFLOW_MAX_TOOL_ROUNDS", "6")))),
                    max(1, float(os.getenv("SETFLOW_API_TIMEOUT", "30"))),
-                   os.getenv("SETFLOW_AUTO_SEED", "false").lower() == "true",
+                   os.getenv("SETFLOW_AUTO_SEED", "true").lower() == "true",
                    os.getenv("SETFLOW_PUBLIC_DEMO", "false").lower() == "true")
 
     @property

@@ -8,7 +8,7 @@ from fastapi.responses import FileResponse
 from sqlalchemy import text
 
 from app.api.dependencies import ServiceDependency
-from app.api.dto import ChatView, PlaylistView, SongView, ToolLogView
+from app.api.dto import ChatView, MusicSearchQuery, PlaylistView, SongView, ToolLogView
 from app.application.ports import JsonObject
 from app.application.schemas import ChatRequest, ExportFormat, ExportRequest, GeneratePlaylist, SongCreate, SongPatch
 from app.config import PROJECT_ROOT
@@ -16,6 +16,12 @@ from app.domain.curves import MoodCurve, PRESET_LABELS
 from app.domain.models import PRESETS
 
 router = APIRouter()
+
+
+@router.get("/api/music/search", tags=["music"])
+def search_music(command: Annotated[MusicSearchQuery, Query()], services: ServiceDependency) -> JsonObject:
+    """Search public YouTube Music metadata without changing the library."""
+    return services.music_search.search(command)
 
 
 @router.get("/health", tags=["status"])
@@ -76,7 +82,8 @@ def export_response(playlist_id: int, format: str, services: ServiceDependency) 
     result = services.exporters.render(services.playlists.get(playlist_id), format)
     return Response(result.content, media_type=result.media_type,
         headers={"Content-Disposition": f'attachment; filename="{result.filename}"',
-                 "X-SetFlow-Missing-Media": "true" if result.warnings else "false"})
+                 "X-SetFlow-Missing-Media": "true" if any("재생 위치가 없어" in w for w in result.warnings) else "false",
+                 "X-SetFlow-Webpage-Links": "true" if any("웹페이지 링크" in w for w in result.warnings) else "false"})
 
 
 @router.post("/api/playlists/{playlist_id}/export", tags=["exports"], response_class=Response,

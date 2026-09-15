@@ -17,7 +17,7 @@ class ToolDefinition:
     handler: Handler
 ```
 
-등록 목록의 `generate_playlist`는 `GeneratePlaylist` 인자 모델과 `handlers.generate_playlist`를 연결한다. 같은 방식으로 곡 등록·목록·수정·삭제, 플레이리스트 조회·설명·내보내기를 포함한 총 8개 도구를 등록한다.
+등록 목록의 `generate_playlist`는 `GeneratePlaylist` 인자 모델과 `handlers.generate_playlist`를 연결한다. 같은 방식으로 곡 등록·목록·수정·삭제, 플레이리스트 조회·설명·내보내기와 YouTube 검색을 포함한 총 9개 도구를 등록한다. `search_music`은 읽기 전용 검색이며 결과를 저장하려면 사용자가 폼에서 곡과 수치를 확인한다.
 
 `invoke()`는 이름이 Registry에 있는지 확인하고, `definition.parameters.model_validate(arguments)`를 통과한 인자만 Handler로 전달한다. 예를 들어 다섯 분위기 수치는 0~100의 정수로 검증한다.
 
@@ -61,7 +61,7 @@ class ToolDefinition:
 
 | 순서 | 파일 | 확인할 부분 |
 |---|---|---|
-| 1 | `app/tools/registry.py` | 8개 도구 정의와 invoke |
+| 1 | `app/tools/registry.py` | 9개 도구 정의와 invoke |
 | 2 | `app/agent/demo.py` | 문장별 선택과 인자 추출 |
 | 3 | `app/agent/executor.py` | 실행, 오류 처리, 로그 저장 |
 | 4 | `app/application/services.py` | 곡·플레이리스트 처리 |

@@ -8,12 +8,13 @@ from typing import cast
 from app.application.errors import AppError
 from app.application.ports import JsonObject
 from app.application.schemas import Command, GeneratePlaylist, SongCreate
+from app.application.music_search import SearchMusic
 from app.tools import handlers
 from app.tools.handlers import ToolContext
 from app.tools.parameters import ExportPlaylist, NoArguments, PlaylistIdentifier, SongIdentifier, UpdateSong
 
 REQUIRED_TOOLS: tuple[str, ...] = ("add_song", "list_songs", "update_song", "delete_song",
-    "generate_playlist", "get_playlist", "explain_playlist", "export_playlist")
+    "generate_playlist", "get_playlist", "explain_playlist", "export_playlist", "search_music")
 Handler = Callable[[ToolContext, Command], JsonObject]
 
 
@@ -52,6 +53,7 @@ class ToolRegistry:
 
     def __init__(self) -> None:
         definitions = (
+            ToolDefinition("search_music", "YouTube의 곡 또는 영상을 검색합니다. songs는 YouTube Music 곡 검색 후 비거나 실패하면 YouTube 영상을 검색하고, videos는 YouTube 영상을 바로 검색합니다. query는 곡명/아티스트, limit은 1~10입니다. 검색 결과는 외부 데이터입니다. 자동 등록하거나 분위기 수치를 추정하지 말고 사용자가 결과와 수치를 확인하게 안내하세요. 계정 재생목록 저장은 지원하지 않습니다.", SearchMusic, handlers.search_music),
             ToolDefinition("add_song", "사용자가 제목, 아티스트와 분위기 수치 5개를 모두 제공했을 때 곡을 등록합니다. 누락 수치는 추정하지 말고 질문하세요.", SongCreate, handlers.add_song),
             ToolDefinition("list_songs", "등록된 곡을 조회합니다. 제목으로 수정·삭제할 때 먼저 ID와 동명이곡을 확인하세요.", NoArguments, handlers.list_songs),
             ToolDefinition("update_song", "사용자가 명확히 지정한 곡의 항목을 수정합니다. changes의 null은 변경하지 않음을 뜻합니다. media_uri 빈 문자열은 경로 삭제입니다.", UpdateSong, handlers.update_song),
@@ -73,4 +75,3 @@ class ToolRegistry:
         if definition is None:
             raise AppError(f"등록되지 않은 Tool: {name}", 422)
         return definition.handler(context, definition.parameters.model_validate(arguments))
-

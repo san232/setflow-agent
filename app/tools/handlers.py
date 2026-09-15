@@ -6,6 +6,7 @@ from typing import cast
 from app.application.ports import JsonObject
 from app.application.schemas import Command, GeneratePlaylist, SongCreate
 from app.application.services import PlaylistService, SongService
+from app.application.music_search import MusicSearchService, SearchMusic
 from app.tools.parameters import ExportPlaylist, PlaylistIdentifier, SongIdentifier, UpdateSong
 
 
@@ -15,6 +16,11 @@ class ToolContext:
 
     songs: SongService
     playlists: PlaylistService
+    music_search: MusicSearchService
+
+
+def search_music(context: ToolContext, command: Command) -> JsonObject:
+    return context.music_search.search(cast(SearchMusic, command))
 
 
 def add_song(context: ToolContext, command: Command) -> JsonObject:
@@ -58,4 +64,3 @@ def export_playlist(context: ToolContext, command: Command) -> JsonObject:
     return {"playlist_id": export.playlist_id, "format": export.format,
             "download_url": f"/api/playlists/{export.playlist_id}/download?format={export.format}",
             "warnings": list(rendered.warnings), "filename": rendered.filename}
-

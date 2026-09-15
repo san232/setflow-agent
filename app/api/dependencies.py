@@ -7,6 +7,7 @@ from fastapi import Depends, Request
 
 from app.agent.service import AgentService
 from app.application.services import PlaylistService, SongService
+from app.application.music_search import MusicSearchService
 from app.exporters.service import ExportService
 from app.infrastructure.database import Database
 from app.infrastructure.repositories import LogRepository
@@ -24,6 +25,7 @@ class Services:
     registry: ToolRegistry
     exporters: ExportService
     database: Database
+    music_search: MusicSearchService
 
 
 def get_services(request: Request) -> Services:
@@ -31,4 +33,3 @@ def get_services(request: Request) -> Services:
 
 
 ServiceDependency = Annotated[Services, Depends(get_services)]
-

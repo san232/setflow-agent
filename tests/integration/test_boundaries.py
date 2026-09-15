@@ -12,7 +12,7 @@ from app.tools.registry import ToolRegistry
 def test_every_handler_executes_its_use_case(tmp_path: Path) -> None:
     with TestClient(create_app(Settings(db_path=tmp_path / "tools.db", demo_mode=True))) as client:
         services = client.app.state.services
-        context = ToolContext(services.songs, services.playlists)
+        context = ToolContext(services.songs, services.playlists, services.music_search)
         registry = ToolRegistry()
         added = registry.invoke("add_song", {"title": "실제 handler", "artist": "테스트", "energy": 50,
             "valence": 50, "tension": 50, "density": 50, "closure": 50}, context)
@@ -50,7 +50,7 @@ def test_api_rejects_invalid_inputs_and_returns_real_exports(tmp_path: Path) -> 
         assert client.get("/docs").status_code == 200
         schema = client.get("/openapi.json").json()
         assert "/api/agent/chat" in schema["paths"]
-        assert len(client.get("/api/tools").json()) == 8
+        assert len(client.get("/api/tools").json()) == 9
 
 
 def test_playlist_and_chat_context_survive_restart(tmp_path: Path) -> None:

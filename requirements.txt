@@ -6,4 +6,5 @@ openai==3.13.0
 python-dotenv==1.2.3
 pytest==9.1.1
 httpx==0.28.1
-
+ytmusicapi==1.12.2
+yt-dlp==2026.8.19

@@ -15,16 +15,19 @@ from app.agent.service import AgentService
 from app.api.dependencies import Services
 from app.api.routes import router
 from app.application.errors import AppError
+from app.application.music_search import MusicSearchProvider, MusicSearchService
 from app.application.services import PlaylistService, SongService
 from app.config import PROJECT_ROOT, Settings
 from app.exporters.service import ExportService
 from app.infrastructure.database import Database
+from app.infrastructure.youtube_music import YouTubeMusicSearch
 from app.infrastructure.repositories import ConversationRepository, LogRepository, SqlPlaylistRepository, SqlSongRepository
 from app.tools.handlers import ToolContext
 from app.tools.registry import ToolRegistry
 
 
-def create_app(settings: Settings | None = None, gateway: ResponsesGateway | None = None) -> FastAPI:
+def create_app(settings: Settings | None = None, gateway: ResponsesGateway | None = None,
+               music_provider: MusicSearchProvider | None = None) -> FastAPI:
     """Inject settings and a gateway to run the entire default suite without a key."""
     config = settings or Settings.from_env()
 
@@ -36,12 +39,13 @@ def create_app(settings: Settings | None = None, gateway: ResponsesGateway | Non
         if config.auto_seed:
             songs.seed(PROJECT_ROOT / "data" / "king_gnu_songs.json")
         playlists = PlaylistService(songs, SqlPlaylistRepository(database))
+        music_search = MusicSearchService(music_provider or YouTubeMusicSearch())
         registry = ToolRegistry()
         logs = LogRepository(database)
-        executor = ToolExecutor(registry, ToolContext(songs, playlists), logs)
+        executor = ToolExecutor(registry, ToolContext(songs, playlists, music_search), logs)
         sdk = gateway or SDKGateway(config)
         agent = AgentService(config, executor, ConversationRepository(database), OpenAIAgent(config, registry, sdk))
-        application.state.services = Services(songs, playlists, agent, logs, registry, ExportService(), database)
+        application.state.services = Services(songs, playlists, agent, logs, registry, ExportService(), database, music_search)
         try:
             yield
         finally:

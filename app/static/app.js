@@ -70,6 +70,10 @@ function renderSongs() {
     chooseCell.append(checkbox); row.append(chooseCell);
     const titleCell = node("td", "song-name");
     titleCell.append(node("strong", "", song.title), node("small", "", `#${song.id} · ${song.artist}`)); row.append(titleCell);
+    const playback = musicPlaybackLink(song);
+    if (playback) { playback.className = "song-media-link"; titleCell.append(playback); }
+    const findLink = node("button", "research-toggle", "링크 찾기"); findLink.type = "button";
+    findLink.setAttribute("aria-label", `${song.title} 링크 찾기`); findLink.addEventListener("click", () => findSongLink(song)); titleCell.append(findLink);
     for (const field of moodFields) row.append(node("td", field === "energy" ? "energy-value" : "", song[field]));
     const controls = node("td");
     const edit = node("button", "manage", "편집"); edit.type = "button"; edit.setAttribute("aria-label", `${song.title} 편집`);
@@ -141,6 +145,7 @@ function updateSelection() {
 }
 
 function editSong(song) {
+  $("selected-music-help").hidden = true;
   state.editing = song.id; state.activeSongId = song.id;
   $("song-form").hidden = false; $("toggle-form").setAttribute("aria-expanded", "true");
   for (const key of ["title", "artist", ...moodFields, "media_uri"]) $("song-form").elements.namedItem(key).value = song[key] ?? "";
@@ -149,6 +154,7 @@ function editSong(song) {
 }
 
 function resetForm() {
+  $("selected-music-help").hidden = true;
   state.editing = null; $("song-form").reset(); $("form-title").textContent = "새 곡 등록";
   $("save-song").textContent = "곡 등록"; $("cancel-edit").hidden = true;
 }
@@ -200,6 +206,8 @@ function renderPlaylist(playlist) {
     const content = node("div", "track-content"); const heading = node("div", "track-heading");
     heading.append(node("strong", "", item.song.title), node("span", `role ${item.role === "절정" ? "peak" : ""}`, item.role));
     content.append(heading, node("p", "track-meta", `${item.song.artist} · 목표 ${item.target_energy.toFixed(1)} / 실제 ${item.actual_energy}`), node("p", "track-reason", item.transition_reason));
+    const playback = musicPlaybackLink(item.song);
+    if (playback) { playback.className = "song-media-link"; content.append(playback); }
     const details = node("details", "penalties"); details.append(node("summary", "", "점수 구성 확인"), node("pre", "", JSON.stringify(item.penalties, null, 2)));
     content.append(details); row.append(content); $("playlist-items").append(row);
   }
@@ -249,9 +257,14 @@ async function download(format) {
   const link = node("a"); link.href = `/api/playlists/${state.playlist.id}/download?format=${format}`;
   link.download = `playlist-${state.playlist.id}.${format}`; document.body.append(link); link.click(); link.remove();
   notify(response.headers.get("X-SetFlow-Missing-Media") === "true" ? "M3U 다운로드를 요청했습니다. 재생 위치가 없는 곡은 주석으로 기록되며 재생되지 않습니다. media_uri를 입력한 뒤 Playlist를 다시 생성하세요." : `${format.toUpperCase()} 다운로드를 요청했습니다.`);
+  if (response.headers.get("X-SetFlow-Webpage-Links") === "true") notify(`${$("notice").textContent} YouTube 링크는 웹페이지이므로 일반 M3U 플레이어에서 재생되지 않을 수 있으며, 계정 재생목록에는 자동 저장되지 않습니다.`);
 }
 
 $("toggle-form").addEventListener("click", () => { $("song-form").hidden = !$("song-form").hidden; $("toggle-form").setAttribute("aria-expanded", String(!$("song-form").hidden)); });
+setupMusicSearch();
+const searchPrompt = node("button", "", "YouTube 곡 찾기"); searchPrompt.type = "button";
+searchPrompt.dataset.prompt = "유튜브에서 King Gnu 白日 검색해줘.";
+document.querySelector(".example-prompts").append(searchPrompt);
 $("cancel-edit").addEventListener("click", resetForm);
 $("select-all").addEventListener("change", () => { state.selected = $("select-all").checked ? new Set(state.songs.map(s => s.id)) : new Set(); renderSongs(); });
 $("preset").addEventListener("change", previewPreset);
@@ -282,7 +295,13 @@ $("chat-form").addEventListener("submit", (event) => { event.preventDefault(); a
   catch (error) { addMessage("assistant", error.message); throw error; }
   state.conversationId = reply.conversation_id; state.activeSongId = reply.song_id;
   addMessage("assistant", reply.message); $("selected-tools").replaceChildren();
-  for (const trace of reply.tool_calls) $("selected-tools").append(traceCard(trace, true));
+  for (const trace of reply.tool_calls) {
+    $("selected-tools").append(traceCard(trace, true));
+    if (trace.tool_name === "search_music" && trace.success) {
+      state.searchTarget = null; $("music-query").value = trace.result.query;
+      renderMusicResults(trace.result); $("music-search-results").scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
   if (reply.download_url && /^\/api\/playlists\/\d+\/download\?format=(json|m3u)$/.test(reply.download_url)) {
     const link = node("a", "download-link", "생성된 파일 다운로드 ↓"); link.href = reply.download_url; link.download = ""; $("selected-tools").append(link);
   }

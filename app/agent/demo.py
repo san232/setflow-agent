@@ -65,8 +65,18 @@ class DemoRouter:
         if any(word in text for word in ("취소", "cancel")):
             state.pop("pending", None)
             return AgentAnswer("입력 대기를 취소했습니다.")
+        if any(word in text for word in ("검색", "찾아", "search")):
+            if any(word in text for word in ("보관함", "등록된", "내 곡")):
+                return self._result(execute("list_songs", {}))
+            query = re.sub(r"(?:유튜브\s*뮤직|유튜브|youtube\s*music|youtube)(?:에서|로)?", "", message, flags=re.I)
+            query = re.sub(r"(?:검색|찾아)(?:해\s*줘|해\s*주세요|\s*줘|\s*주세요)?[.!?]*\s*$", "", query).strip()
+            query = re.sub(r"^(?:검색|search)\s*[:：]?\s*", "", query, flags=re.I).strip(" \"'“”.!?")
+            query = re.sub(r"(?:을|를)$", "", query).strip()
+            if not query:
+                return AgentAnswer("검색할 곡명이나 아티스트를 입력하세요. 예: ‘유튜브에서 King Gnu 白日 검색해줘’.", True)
+            return self._result(execute("search_music", {"query": query, "kind": "songs", "limit": 8}))
         if any(word in text for word in ("유튜브", "youtube", "spotify", "스포티파이")):
-            return AgentAnswer("이번 MVP는 외부 음악 서비스 연동을 지원하지 않습니다. JSON 또는 M3U 내보내기를 사용하세요.")
+            return AgentAnswer("YouTube Music 곡 검색은 가능합니다. ‘유튜브에서 King Gnu 白日 검색해줘’처럼 요청하세요. 계정 재생목록에 직접 저장하는 기능은 아직 없으며, JSON/M3U로 내보낼 수 있습니다.")
         pending = state.get("pending")
         if isinstance(pending, dict) and (song_metadata(message) or "등록" in text):
             values = cast(JsonObject, pending.get("values", {})) | song_metadata(message)

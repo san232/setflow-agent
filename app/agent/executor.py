@@ -55,6 +55,9 @@ class ToolExecutor:
 
 def summarize(name: str, result: JsonObject) -> str:
     """Short factual text rather than fabricated model explanations."""
+    if name == "search_music":
+        results = result.get("results", [])
+        return f"{result.get('source', 'YouTube')} 검색 결과 {len(results) if isinstance(results, list) else 0}개 · 등록할 곡을 선택하세요."
     if name == "list_songs":
         songs = result.get("songs", [])
         return f"등록된 곡 {len(songs) if isinstance(songs, list) else 0}개 조회"

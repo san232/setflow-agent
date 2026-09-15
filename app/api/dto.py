@@ -1,9 +1,16 @@
 """Public response models displayed in the OpenAPI documentation."""
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from app.application.ports import JsonObject
 from app.application.schemas import SongCreate
+from app.application.music_search import SearchMusic
+
+
+class MusicSearchQuery(SearchMusic):
+    """HTTP query strings are parsed to integers; tool JSON retains strict integers."""
+
+    limit: int = Field(default=8, ge=1, le=10)
 
 
 class SongView(SongCreate):
@@ -70,4 +77,3 @@ class ChatView(BaseModel):
     playlist_id: int | None
     song_id: int | None
     download_url: str | None
-

@@ -7,6 +7,14 @@
 
 GitHub 저장소: [san232/setflow-agent](https://github.com/san232/setflow-agent)
 
+## 웹사이트로 배포하기
+
+[Render에서 무료 웹 서버 만들기](https://render.com/deploy?repo=https://github.com/san232/setflow-agent)
+
+저장소의 `render.yaml`이 Python 서버 설치·실행, 상태 확인, 시작 시 King Gnu 43곡 불러오기를 설정합니다. Render 계정으로 위 링크를 열고 **Free** 서비스를 배포하면 접속용 HTTPS 주소가 생깁니다. 배포 화면·설정값·검증 순서는 [배포 안내](docs/DEPLOYMENT.md)에 있습니다.
+
+공개 체험판은 API 키 없이 Demo Mode로 동작합니다. 보관함·결과·요청 로그는 방문자끼리 공유하며, 무료 서버가 다시 켜질 때 초기화될 수 있으므로 결과를 JSON/M3U로 저장하세요. 개인적으로 계속 저장해 사용할 때는 아래의 로컬 실행을 사용합니다.
+
 ## 설치하고 실행하기
 
 Python 3.12 이상을 설치한 Windows PC에서 ZIP을 풀고 `setflow-agent` 폴더를 PowerShell로 엽니다. 다음은 Python 3.12 Launcher 기준입니다.

@@ -294,6 +294,7 @@ $("chat-form").addEventListener("submit", (event) => { event.preventDefault(); a
 async function initialize() {
   try {
     const health = await api("/health"); $("server-status").textContent = "● 서버 정상";
+    $("public-demo-notice").hidden = !health.public_demo;
     $("mode").textContent = health.mode === "demo" ? "Demo Mode" : "OpenAI Mode";
     $("mode").classList.toggle("demo", health.mode === "demo");
     if (!health.agent_ready) notify("OPENAI_MODEL이 비어 있습니다. 일반 기능은 사용 가능하며, Agent를 사용하려면 .env 설정 후 재시작하세요.", true);

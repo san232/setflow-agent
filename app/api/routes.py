@@ -25,6 +25,7 @@ def health(services: ServiceDependency) -> JsonObject:
         connection.execute(text("SELECT 1"))
     settings = services.agent.settings
     return {"status": "ok", "mode": settings.mode, "model": settings.model if settings.mode == "openai" else None,
+            "public_demo": settings.public_demo,
             "agent_ready": settings.mode == "demo" or bool(settings.model),
             "notice": "Demo Mode · 제한된 규칙 Router" if settings.mode == "demo" else "OpenAI Mode · Responses API",
             "prototype_notice": "사용자 입력 분위기 수치에 기반한 Prototype"}

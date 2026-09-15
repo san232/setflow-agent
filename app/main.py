@@ -33,6 +33,8 @@ def create_app(settings: Settings | None = None, gateway: ResponsesGateway | Non
         database = Database(config.db_path)
         database.initialize()
         songs = SongService(SqlSongRepository(database))
+        if config.auto_seed:
+            songs.seed(PROJECT_ROOT / "data" / "king_gnu_songs.json")
         playlists = PlaylistService(songs, SqlPlaylistRepository(database))
         registry = ToolRegistry()
         logs = LogRepository(database)
@@ -74,4 +76,3 @@ def create_app(settings: Settings | None = None, gateway: ResponsesGateway | Non
 
 
 app = create_app()
-

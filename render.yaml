@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: setflow-agent
+    runtime: python
+    plan: free
+    region: singapore
+    branch: main
+    buildCommand: python -m pip install -r requirements-lock.txt
+    startCommand: python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeployTrigger: off
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.14"
+      - key: PYTHONUTF8
+        value: "1"
+      - key: SETFLOW_DEMO_MODE
+        value: "true"
+      - key: SETFLOW_PUBLIC_DEMO
+        value: "true"
+      - key: SETFLOW_AUTO_SEED
+        value: "true"
+      - key: SETFLOW_DB_PATH
+        value: /tmp/setflow/setflow.db
